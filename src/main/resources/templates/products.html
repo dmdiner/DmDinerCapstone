@@ -50,7 +50,6 @@
         </tr>
         </thead>
         <tbody>
-
         <tr th:each="product, iStat : ${products}">
             <th scope="row" th:text="${iStat.index + 1}">1</th>
             <td th:text="${product.name}">Larry</td>
@@ -59,7 +58,6 @@
 
             <td><a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a></td>
             <td><a href="" th:href="@{/admin/product/update/{id}(id=${product.id})}" class="btn btn-warning">Update</a></td>
-
         </tr>
         </tbody>
     </table>

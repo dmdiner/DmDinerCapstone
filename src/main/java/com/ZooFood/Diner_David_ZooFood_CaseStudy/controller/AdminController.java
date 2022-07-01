@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.swing.text.html.Option;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -52,13 +51,13 @@ public class AdminController {
     }
 
     @GetMapping("/admin/categories/delete/{id}")
-    public String deleteCategory(@PathVariable int id){
+    public String getDeleteCategory(@PathVariable int id){
         categoryService.removeCategoryById(id);
         return "redirect:/admin/categories";
     }
 
     @GetMapping("admin/categories/update/{id}")
-    public String updateCategory(@PathVariable int id, Model model){
+    public String getUpdateCategory(@PathVariable int id, Model model){
         Optional<Category> category = categoryService.getCategoryById(id);
         if(category.isPresent()){
             model.addAttribute("category", category.get());
@@ -72,7 +71,7 @@ public class AdminController {
 
 
     @GetMapping("/admin/products")
-    public String deleteProducts(Model model){
+    public String getDeleteProducts(Model model){
         model.addAttribute("products", productService.getAllProduct());
         return "products";
     }
@@ -108,6 +107,29 @@ public class AdminController {
         product.setImageName(imageUUID);
         productService.addProduct(product);
         return "redirect:/admin/products";
+    }
+
+    @GetMapping("/admin/product/delete/{id}")
+    public String getDeleteProduct(@PathVariable long id){
+        productService.removeProductById(id);
+        return "redirect:/admin/products";
+    }
+
+    @GetMapping("/admin/product/update/{id}")
+    public String getProductUpdate(@PathVariable long id, Model model){
+        Product product = productService.getProductById(id).get();
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setId(product.getId());
+        productDTO.setName(product.getName());
+        productDTO.setCategoryId(product.getCategory().getId());
+        productDTO.setPrice(product.getPrice());
+        productDTO.setWeight(product.getWeight());
+        productDTO.setDescription(product.getDescription());
+        productDTO.setImageName(product.getImageName());
+        model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("productDTO", productDTO);
+
+        return "productAdd";
     }
 
 
