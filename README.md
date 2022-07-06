@@ -9,3 +9,6 @@ Spring Boot
 Spring Security
 Spring JPA
 Bootstrap
+
+
+![ER Diagram](https://i.imgur.com/PeW4j0I.png)
