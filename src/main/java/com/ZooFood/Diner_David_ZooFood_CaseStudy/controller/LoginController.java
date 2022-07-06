@@ -1,6 +1,6 @@
 package com.ZooFood.Diner_David_ZooFood_CaseStudy.controller;
 
-import com.ZooFood.Diner_David_ZooFood_CaseStudy.Global.GlobalData;
+import com.ZooFood.Diner_David_ZooFood_CaseStudy.Global.Data;
 import com.ZooFood.Diner_David_ZooFood_CaseStudy.model.Role;
 import com.ZooFood.Diner_David_ZooFood_CaseStudy.model.User;
 import com.ZooFood.Diner_David_ZooFood_CaseStudy.repository.RoleRepository;
@@ -28,7 +28,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(){
-        GlobalData.cart.clear();
+        Data.cart.clear();
         return "login";
     }
 
