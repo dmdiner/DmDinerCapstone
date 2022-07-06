@@ -50,6 +50,4 @@ public class HomeController {
         model.addAttribute("cartCount", GlobalData.cart.size());
         return "viewProduct";
     }
-
-
 }
