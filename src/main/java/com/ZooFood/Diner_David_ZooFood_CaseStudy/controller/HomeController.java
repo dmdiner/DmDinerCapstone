@@ -17,11 +17,13 @@ public class HomeController {
     @Autowired
     ProductService productService;
 
-    @GetMapping({"/", "/home"})
+    //Redirects to the home page when requested
+    @GetMapping({"/", "/home", "/index"})
     public String home(Model model){
         return "index";
     }
 
+    //Redirects to the shop page
     @GetMapping("/shop")
     public String shop(Model model){
         model.addAttribute("categories", categoryService.getAllCategory());
@@ -31,6 +33,7 @@ public class HomeController {
         return "shop";
     }
 
+    //Redirects to shop page for specific categories
     @GetMapping("/shop/category/{id}")
     public String shopByCategory(Model model, @PathVariable int id){
         model.addAttribute("categories", categoryService.getAllCategory());
@@ -40,6 +43,7 @@ public class HomeController {
         return "shop";
     }
 
+    //redirects to product page to view specific product chosen
     @GetMapping("/shop/viewproduct/{id}")
     public String viewProduct(Model model, @PathVariable int id){
         model.addAttribute("product", productService.getProductById(id).get());

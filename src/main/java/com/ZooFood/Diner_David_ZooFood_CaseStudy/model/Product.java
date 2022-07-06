@@ -16,6 +16,7 @@ public class Product {
     Long id;
     String name;
 
+    //Many products can be in one category
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
     Category category;

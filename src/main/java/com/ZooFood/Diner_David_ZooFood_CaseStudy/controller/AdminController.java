@@ -27,35 +27,41 @@ public class AdminController {
     @Autowired
     ProductService productService;
 
+    //Redirect to admin login page when URL is followed by /admin
     @GetMapping("/admin")
     public String adminLogin(){
         return "adminLogin";
     }
 
+    //Goes to categories modification page when logged in as admin
     @GetMapping("/admin/categories")
     public String getCategories(Model model){
         model.addAttribute("categories", categoryService.getAllCategory());
         return "categories";
     }
 
+    //Goes to the add categories page when logged in as admin
     @GetMapping("/admin/categories/add")
     public String getCategoriesAdd(Model model){
         model.addAttribute("category", new Category());
         return "categoriesAdd";
     }
 
+    //Redirects to categories modification page when logged in as admin
     @PostMapping("/admin/categories/add")
     public String postCategoryAdd(@ModelAttribute("category") Category category){
         categoryService.addCategory(category);
         return "redirect:/admin/categories";
     }
 
+    //Deletes a category when logged in as admin
     @GetMapping("/admin/categories/delete/{id}")
     public String getDeleteCategory(@PathVariable int id){
         categoryService.removeCategoryById(id);
         return "redirect:/admin/categories";
     }
 
+    //Goes to the categories add page to modify/update a category when logged in as admin
     @GetMapping("admin/categories/update/{id}")
     public String getUpdateCategory(@PathVariable int id, Model model){
         Optional<Category> category = categoryService.getCategoryById(id);
@@ -70,12 +76,14 @@ public class AdminController {
     /**---------------------------Product Section----------------------------------------------**/
 
 
+    //Goes to the product modification page when logged in as admin
     @GetMapping("/admin/products")
-    public String getDeleteProducts(Model model){
+    public String getProduct(Model model){
         model.addAttribute("products", productService.getAllProduct());
         return "products";
     }
 
+    //Goes to the product add page when logged in as admin
     @GetMapping("/admin/products/add")
     public String getProductAdd(Model model){
         model.addAttribute("productDTO", new ProductDTO());
@@ -83,6 +91,7 @@ public class AdminController {
         return "productsAdd";
     }
 
+    //Redirects and updates the product page when the admin adds a product
     @PostMapping("/admin/products/add")
     public String postProductAdd(@ModelAttribute("productDTO") ProductDTO productDTO,
                                  @RequestParam("productImage") MultipartFile file,
@@ -109,12 +118,14 @@ public class AdminController {
         return "redirect:/admin/products";
     }
 
+    //Goes to the product delete page when logged in as admin
     @GetMapping("/admin/product/delete/{id}")
     public String getDeleteProduct(@PathVariable long id){
         productService.removeProductById(id);
         return "redirect:/admin/products";
     }
 
+    //Goes to the product update page when logged in as admin
     @GetMapping("/admin/product/update/{id}")
     public String getUpdateProduct(@PathVariable long id, Model model){
         Product product = productService.getProductById(id).get();

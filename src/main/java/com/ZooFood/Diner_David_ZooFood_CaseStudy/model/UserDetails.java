@@ -2,15 +2,14 @@ package com.ZooFood.Diner_David_ZooFood_CaseStudy.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class CustomUserDetail extends User implements UserDetails {
+public class UserDetails extends User implements org.springframework.security.core.userdetails.UserDetails {
 
-    public CustomUserDetail(User user){
+    public UserDetails(User user){
         super(user);
     }
 

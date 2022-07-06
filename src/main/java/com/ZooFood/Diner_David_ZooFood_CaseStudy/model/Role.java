@@ -19,6 +19,7 @@ public class Role {
     @NotEmpty
     private String name;
 
+    //Many useres can be multiple roles
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
 

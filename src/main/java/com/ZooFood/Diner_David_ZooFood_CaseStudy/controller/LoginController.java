@@ -37,6 +37,7 @@ public class LoginController {
         return "register";
     }
 
+    //Creates a user on the register page and ads it to the user repository
     @PostMapping("/register")
     public String postRegister(@ModelAttribute("user") User user, HttpServletRequest request) throws ServletException {
         String password = user.getPassword();
