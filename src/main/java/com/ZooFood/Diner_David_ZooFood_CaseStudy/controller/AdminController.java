@@ -116,7 +116,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin/product/update/{id}")
-    public String getProductUpdate(@PathVariable long id, Model model){
+    public String getUpdateProduct(@PathVariable long id, Model model){
         Product product = productService.getProductById(id).get();
         ProductDTO productDTO = new ProductDTO();
         productDTO.setId(product.getId());
@@ -128,19 +128,6 @@ public class AdminController {
         productDTO.setImageName(product.getImageName());
         model.addAttribute("categories", categoryService.getAllCategory());
         model.addAttribute("productDTO", productDTO);
-
-        return "productAdd";
+        return "productsAdd";
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
