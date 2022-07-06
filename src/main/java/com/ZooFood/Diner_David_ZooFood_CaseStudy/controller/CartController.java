@@ -53,7 +53,6 @@ public class CartController {
         model.addAttribute("total", Data.cart.stream().mapToDouble(Product::getPrice).sum());
         model.addAttribute("cart", Data.cart);
         Data.cart.clear();
-
         return "orderSent";
     }
 }
