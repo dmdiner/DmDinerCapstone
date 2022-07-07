@@ -1,5 +1,5 @@
 # DmDinerCapstone - ZooFood
-Capstone for Per Scholas <br>
+Capstone <br>
 This website is a recreation of a website to buy and view both domestic and exotic animals.
 
 Used some of the following:*MariaDB
