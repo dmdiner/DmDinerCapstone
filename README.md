@@ -7,7 +7,11 @@ Used some of the following:*MariaDB
   * Spring Boot
   * Spring Security
   * Spring JPA
-  * Bootstrap
+  * Bootstrap (styling)
+  * Bcrypt (password encoding)
+  * MariaDB (to store the database)
+  * HTML/Java/CSS
+  * OAuth (to authenticate logins)
 
 
 ![ER Diagram](https://i.imgur.com/PeW4j0I.png)
