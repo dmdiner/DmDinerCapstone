@@ -19,6 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     GoogleOAuth2SuccessHandler googleOAuth2SuccessHandler;
     @Autowired
     UserDetailsService customUserDetailService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -36,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

@@ -42,14 +42,14 @@ public class AdminController {
 
     //Goes to the add categories page when logged in as admin
     @GetMapping("/admin/categories/add")
-    public String getCategoriesAdd(Model model){
+    public String getAddCategories(Model model){
         model.addAttribute("category", new Category());
         return "categoriesAdd";
     }
 
     //Redirects to categories modification page when logged in as admin
     @PostMapping("/admin/categories/add")
-    public String postCategoryAdd(@ModelAttribute("category") Category category){
+    public String postAddCategory(@ModelAttribute("category") Category category){
         categoryService.addCategory(category);
         return "redirect:/admin/categories";
     }
@@ -85,7 +85,7 @@ public class AdminController {
 
     //Goes to the product add page when logged in as admin
     @GetMapping("/admin/products/add")
-    public String getProductAdd(Model model){
+    public String getAddProduct(Model model){
         model.addAttribute("productDTO", new ProductDTO());
         model.addAttribute("categories", categoryService.getAllCategory());
         return "productsAdd";
@@ -93,7 +93,7 @@ public class AdminController {
 
     //Redirects and updates the product page when the admin adds a product
     @PostMapping("/admin/products/add")
-    public String postProductAdd(@ModelAttribute("productDTO") ProductDTO productDTO,
+    public String postAddProduct(@ModelAttribute("productDTO") ProductDTO productDTO,
                                  @RequestParam("productImage") MultipartFile file,
                                  @RequestParam("imgName") String imgName)  throws IOException {
         Product product = new Product();

@@ -39,7 +39,6 @@ public class HomeController {
         model.addAttribute("categories", categoryService.getAllCategory());
         model.addAttribute("products", productService.getAllProductsByCategoryId(id));
         model.addAttribute("cartCount", Data.cart.size());
-
         return "shop";
     }
 
