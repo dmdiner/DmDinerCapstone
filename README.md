@@ -5,8 +5,8 @@ This website is a recreation of a website to buy and view both domestic and exot
 Used some of the following:*MariaDB
   * Thymleaf
   * Spring Boot
-  * Spring Security
-  * Spring JPA
+  * Spring Security (used to make some pages and buttons only accessable by admin roles)
+  * Spring JPA (helped with repositories)
   * Bootstrap (styling)
   * Bcrypt (password encoding)
   * MariaDB (to store the database)
